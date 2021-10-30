@@ -125,6 +125,10 @@ Jawab:
 - Lakukan ping franky.C12.com:
 5-5
 
+4. Buat juga reverse domain untuk domain utama
+
+5. Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama 
+
 6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
 Jawab:
 - Pada node EniesLobby, Edit file franky.c12.com menggunakan nano /etc/bind/kaizoku/franky.c12.com seperti gambar di bawah
