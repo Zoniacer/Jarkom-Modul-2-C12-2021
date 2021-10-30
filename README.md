@@ -9,9 +9,83 @@ Shidqi Dhaifullah - 05111940000108
 
 Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut:
 ![No  1 Screenshot 2021-10-29 234903](https://user-images.githubusercontent.com/73422724/139473071-9ea16174-9f31-4e3a-a720-6cb4c203451a.png)
-EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet (1).
-<br><br><br>
-<br><br><br>
+1. EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet (1).<br>
+Jawab:
+- Konfigurasi topologi seperti berikut:
+1-1
+- Lakukan setting network pada masing-masing node sebagai berikut:<br>
+<b>Foosha</b>
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 10.20.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 10.20.2.1
+	netmask 255.255.255.0
+```
+<b>Loguetown</b>
+```
+auto eth0
+iface eth0 inet static
+	address 10.20.1.2
+	netmask 255.255.255.0
+	gateway 10.20.1.1
+```
+<b>Alabasta</b>
+```
+auto eth0
+iface eth0 inet static
+	address 10.20.1.3
+	netmask 255.255.255.0
+	gateway 10.20.1.1
+```
+<b>EniesLobby</b>
+```
+auto eth0
+iface eth0 inet static
+	address 10.20.2.2
+	netmask 255.255.255.0
+	gateway 10.20.2.1
+```
+<b>Water7</b>
+```
+auto eth0
+iface eth0 inet static
+	address 10.20.2.3
+	netmask 255.255.255.0
+	gateway 10.20.2.1
+```
+<b>Skypie</b>
+```
+auto eth0
+iface eth0 inet static
+	address 10.20.2.4
+	netmask 255.255.255.0
+	gateway 10.20.2.1
+```
+
+-Pada router Foosha, masukkan perintah <code>-t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.20.0.0/16</code><br>
+-Pada node lain, masukkan perintah <code>192.168.122.1 > /etc/resolv.conf</code><br>
+
+2. Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com
+dengan alias www.franky.yyy.com pada folder kaizoku.<br>
+Jawab:
+-Pada EniesLobby, lakukan perintah <code>cp /etc/bind/db.local /etc/bind/kaizoku/franky.C12.com</code>
+-Masukkan konfigurasi berikut pada file franky.c12.com:
+2-1
+-Lakukan ping pada www.franky.c12.com:
+2-2
+
+3. Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie.
+Jawab:
+-Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/kaizoku/franky.B09.com:
+3-1
 
 6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
 Jawab:
@@ -225,7 +299,7 @@ Jawab:
 17. Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!<br>
 Jawab:
 - Pada node Skypie, Jalankan perintah a2enmod rewrite
-- Pada node Skypie, Rrestart apache2 menggunakan service apache2 restart 
+- Pada node Skypie, Rrestart apache2 menggunakan service apache2 restart
 - Pada node Skypie, Tambahkan file .htacces menggunakan nano /var/www/super.franky.c12.com/.htacces
 
 ![No  17 part 1 Screenshot 2021-10-29 232754](https://user-images.githubusercontent.com/73422724/139473511-41dcd007-c047-4479-bdfd-bb1ec54d8b41.png)
@@ -234,7 +308,7 @@ Jawab:
 
 ![No  17 part 2 Screenshot 2021-10-29 232921](https://user-images.githubusercontent.com/73422724/139473520-84c83ee9-70c0-4336-b35c-ae485ab3ff4d.png)
 
-- Pada node Skypie, Restart apache2 menggunakan service apache2 restart 
+- Pada node Skypie, Restart apache2 menggunakan service apache2 restart
 
 ![No  17 part 3 Screenshot 2021-10-29 233001](https://user-images.githubusercontent.com/73422724/139473523-2779d9d7-7c9e-4ab6-a110-693263eaaf99.png)
 
