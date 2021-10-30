@@ -14,6 +14,19 @@ EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, d
 <br><br><br>
 <br><br><br>
 
+15. dengan autentikasi username luffy dan password onepiece dan file di /var/www/general.mecha.franky.yyy<br>
+Jawab:
+- Dalam node skypie dibuka /var/www/general.mecha.franky.c12 dan digunakan utility ```htpasswd -c /etc/apache2/.htpasswd luffy``` dengan luffy sebagai username dan nanti akan diminta konfirmasi password
+- 
+![image](https://user-images.githubusercontent.com/63639703/139525310-38aadc0c-c39d-407f-8011-2ab21102125e.png)
+
+- Selanjutnya langsung ke lougetown dan lynx http://www.general.mecha.franky.c12.com:15000
+
+![image](https://user-images.githubusercontent.com/63639703/139525378-13c404f6-cb35-4942-b7c5-6a66220a251a.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139525391-bebc3760-96e4-460a-b975-3528c1bb9f58.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139525399-786b4fb9-ccf3-4749-8bee-4e8dd1de2412.png)
 
 16.  Dan setiap kali mengakses IP Skypie akan dialihkan secara otomatis ke www.franky.yyy.com<br>
 Jawab:
