@@ -14,13 +14,22 @@ EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, d
 <br><br><br>
 <br><br><br>
 
+14. Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses dengan port 15000 dan port 15500<br>
+Jawab:
+- Dalam node skypie dibuka /etc/apache2/sites-available/general.mecha.c12.com.conf kemudian virtual host diubah menjadi 15000 dan 15500 seperti berikut
+
+![image](https://user-images.githubusercontent.com/63639703/139525512-e245b568-208e-4bc3-8da5-e6a7280f93c4.png)
+
+- restart apache kemudian langsung lynx www.general.mecha.franky.c12.com:15000, karena sudah dibuat username dan password maka hasilnya di no. 15.
+
 15. dengan autentikasi username luffy dan password onepiece dan file di /var/www/general.mecha.franky.yyy<br>
 Jawab:
-- Dalam node skypie dibuka /var/www/general.mecha.franky.c12 dan digunakan utility ```htpasswd -c /etc/apache2/.htpasswd luffy``` dengan luffy sebagai username dan nanti akan diminta konfirmasi password
-- 
+- Dalam node skypie dibuka /var/www/general.mecha.franky.c12 dan digunakan utility ```htpasswd -c /etc/apache2/.htpasswd luffy``` dengan luffy sebagai username dan nanti akan diminta konfirmasi password.
+
 ![image](https://user-images.githubusercontent.com/63639703/139525310-38aadc0c-c39d-407f-8011-2ab21102125e.png)
 
-- Selanjutnya langsung ke lougetown dan lynx http://www.general.mecha.franky.c12.com:15000
+
+- Restart apache kemudian langsung ke lougetown dan lynx www.general.mecha.franky.c12.com:15000
 
 ![image](https://user-images.githubusercontent.com/63639703/139525378-13c404f6-cb35-4942-b7c5-6a66220a251a.png)
 
