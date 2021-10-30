@@ -16,6 +16,8 @@ Jawab:
 - Lakukan setting network pada masing-masing node sebagai berikut:
 <br>
 <b>Foosha</b>
+
+
 ```
 auto eth0
 iface eth0 inet dhcp
