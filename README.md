@@ -13,7 +13,8 @@ Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi 
 Jawab:
 - Konfigurasi topologi seperti berikut:
 1-1
-- Lakukan setting network pada masing-masing node sebagai berikut:<br>
+- Lakukan setting network pada masing-masing node sebagai berikut:
+<br>
 <b>Foosha</b>
 ```
 auto eth0
@@ -28,7 +29,9 @@ auto eth2
 iface eth2 inet static
 	address 10.20.2.1
 	netmask 255.255.255.0
+
 ```
+
 <b>Loguetown</b>
 ```
 auto eth0
@@ -36,7 +39,9 @@ iface eth0 inet static
 	address 10.20.1.2
 	netmask 255.255.255.0
 	gateway 10.20.1.1
+
 ```
+
 <b>Alabasta</b>
 ```
 auto eth0
@@ -44,7 +49,9 @@ iface eth0 inet static
 	address 10.20.1.3
 	netmask 255.255.255.0
 	gateway 10.20.1.1
+
 ```
+
 <b>EniesLobby</b>
 ```
 auto eth0
@@ -52,7 +59,9 @@ iface eth0 inet static
 	address 10.20.2.2
 	netmask 255.255.255.0
 	gateway 10.20.2.1
+
 ```
+
 <b>Water7</b>
 ```
 auto eth0
@@ -60,7 +69,9 @@ iface eth0 inet static
 	address 10.20.2.3
 	netmask 255.255.255.0
 	gateway 10.20.2.1
+
 ```
+
 <b>Skypie</b>
 ```
 auto eth0
@@ -68,26 +79,51 @@ iface eth0 inet static
 	address 10.20.2.4
 	netmask 255.255.255.0
 	gateway 10.20.2.1
+
 ```
 
--Pada router Foosha, masukkan perintah <code>-t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.20.0.0/16</code><br>
--Pada node lain, masukkan perintah <code>192.168.122.1 > /etc/resolv.conf</code><br>
+- Pada router Foosha, masukkan perintah <code>-t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.20.0.0/16</code><br>
+- Pada node lain, masukkan perintah <code>192.168.122.1 > /etc/resolv.conf</code><br>
 
 2. Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com
 dengan alias www.franky.yyy.com pada folder kaizoku.<br>
 Jawab:
--Pada EniesLobby, lakukan perintah <code>cp /etc/bind/db.local /etc/bind/kaizoku/franky.C12.com</code>
--Masukkan konfigurasi berikut pada file franky.c12.com:
+- Pada EniesLobby, lakukan perintah <code>cp /etc/bind/db.local /etc/bind/kaizoku/franky.C12.com</code>
+- Masukkan konfigurasi berikut pada file franky.c12.com:
 2-1
--Lakukan ping pada www.franky.c12.com:
+- Lakukan ping pada www.franky.c12.com:
 2-2
 
 3. Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie.
 Jawab:
--Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/kaizoku/franky.C12.com:
+- Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/kaizoku/franky.C12.com:
 3-1
 kemudian restart bind9
--Pada Loguetown, ping super.frank
+- Pada Loguetown, ping super.franky.C12.com:
+3-2
+
+4. Buat juga reverse domain untuk domain utama.
+Jawab:
+- Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/named.conf.local:
+4-1
+- Lakukan perintah <code>cp /etc/bind/db.local /etc/bind/kaizoku/2.181.192.in-addr.arpa</code> dan masukkan konfigurasi berikut pada file yang dibuat:
+4-2
+- Restart bind9
+- Pada Loguetown, cek konfigurasi dengan perintah <code>host -t PTR 10.20.2.2</code>
+4-3
+
+5. Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
+Jawab:
+- Pada EniesLobby, masukkan config berikut ke /etc/bind/named.conf.local, kemudian restart bind9:
+5-1
+- Pada Water7, masukkan config berikut ke /etc/bind/named.conf.local, kemudian restart bind9:
+5-2
+- Pada EniesLobby, hentikan service bind9:
+5-3
+- Pada Loguetown, edit file /etc/resolv.conf:
+5-4
+- Lakukan ping franky.C12.com:
+5-5
 
 6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
 Jawab:
