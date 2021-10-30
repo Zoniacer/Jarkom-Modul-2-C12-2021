@@ -145,9 +145,41 @@ Jawab:
 
 ![No  10 part 4 lapres Screenshot 2021-10-30 151707](https://user-images.githubusercontent.com/73422724/139526243-6a17cb39-cc13-4d49-b333-18329474ccd2.png)
 
+11. Akan tetapi, pada folder /public, Luffy ingin hanya dapat melakukan directory listing saja.<br>
+Jawaban:
+- Dalam node skypie dibuka /etc/apache2/sites-available/super.franky.c12.com.conf dan dilalukan directory listing /public
 
-<br><br><br>
-<br><br><br>
+![image](https://user-images.githubusercontent.com/63639703/139529774-83683a47-5d62-496c-a2ea-d0cc85b0cc9f.png)
+
+- Lalu service apache9 restart dan langsung dicoba lynx super.franky.c12.com/public
+
+![image](https://user-images.githubusercontent.com/63639703/139529748-9e402eb5-cf96-4c58-a675-81e24f43901f.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139529758-106db9d0-ad5f-4236-96b0-801f2133f159.png)
+
+12. Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /error untuk mengganti error kode pada apache<br>
+Jawaban:
+- Dalam node skypie dibuka /etc/apache2/sites-available/super.franky.c12.com.conf dan ditambahkan ErrorDocument
+
+![image](https://user-images.githubusercontent.com/63639703/139529622-2ad48783-feba-4570-b008-8df150890a06.png)
+
+- Lalu service apache9 restart dan langsung dicoba lynx super.franky.c12.com/blabla
+
+![image](https://user-images.githubusercontent.com/63639703/139529642-27a0e2b7-e303-49ee-9d07-18a0dc9b8332.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139529651-ddd5a5b1-f26c-4e5e-b713-500c574b7be0.png)
+
+13. Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host ini bertujuan untuk dapat mengakses file asset www.super.franky.yyy.com/public/js menjadi www.super.franky.yyy.com/js<br>
+Jawaban:
+- Dalam node skypie dibuka /etc/apache2/sites-available/super.franky.c12.com.conf dan ditambahkan alias
+
+![image](https://user-images.githubusercontent.com/63639703/139529481-173bbc68-8f24-4574-9762-671e7a1c1d4e.png)
+
+- Lalu bisa service apache2 restart dan langsung lynx di node lougetown
+
+![image](https://user-images.githubusercontent.com/63639703/139529512-a0e2c2c6-a8d4-40b9-95e5-fa6ef20dbded.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139529529-19487ad9-baef-47cf-a849-dc0551b70f2a.png)
 
 14. Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses dengan port 15000 dan port 15500<br>
 Jawab:
