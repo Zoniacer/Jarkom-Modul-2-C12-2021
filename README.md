@@ -77,3 +77,53 @@ Jawab:
 - Pilih gambar background-frank.jpg untuk diunduh sehingga menampilkan tampilan berikut
 
 ![No  17 part 10 Screenshot 2021-10-29 233537](https://user-images.githubusercontent.com/73422724/139473545-4dbc999f-1678-4a34-bfb3-0718fcdc4baf.png)
+
+### SCRIPTING DAN FILE ROOT
+
+EniesLobby
+
+- File root
+
+![image](https://user-images.githubusercontent.com/63639703/139524461-fc114654-2e32-41ef-a58e-9296ed61233e.png)
+
+- Script
+
+![image](https://user-images.githubusercontent.com/63639703/139524479-309d37b6-41fc-48d8-af64-5d64c6ba5da9.png)
+
+Water7
+
+- File root
+
+![image](https://user-images.githubusercontent.com/63639703/139524512-6fba5be7-d1b5-472f-aa4b-2358e28a8b5b.png)
+
+- Script
+
+![image](https://user-images.githubusercontent.com/63639703/139524525-fe8f3c74-84f2-4279-befb-f988590a5003.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139524571-860a06b1-b761-464b-89ca-58ee4e67466c.png)
+
+Skypie
+
+- File root
+
+![image](https://user-images.githubusercontent.com/63639703/139524595-8f2db114-c7aa-4fd6-b098-d4b4da14da40.png)
+
+- Script
+
+![image](https://user-images.githubusercontent.com/63639703/139524611-f8404886-6f25-4bde-89c8-9b185ac03803.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139524630-e528f4af-636e-458f-9670-9e3b1a7a1e70.png)
+
+Lougetown
+
+- File root
+
+![image](https://user-images.githubusercontent.com/63639703/139524672-cc63ccc8-c11c-4c6d-a134-fb2ad2bb0e89.png)
+
+- Script
+
+![image](https://user-images.githubusercontent.com/63639703/139524686-f6be385c-ac9e-4f86-99a2-a34666933a52.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139524726-bf2d1aae-ccbe-491b-8a46-7c428a991890.png)
+
+
