@@ -10,6 +10,141 @@ Shidqi Dhaifullah - 05111940000108
 Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut:
 ![No  1 Screenshot 2021-10-29 234903](https://user-images.githubusercontent.com/73422724/139473071-9ea16174-9f31-4e3a-a720-6cb4c203451a.png)
 EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet (1).
+<br><br><br>
+<br><br><br>
+
+6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
+Jawab:
+- Pada node EniesLobby, Edit file franky.c12.com menggunakan nano /etc/bind/kaizoku/franky.c12.com seperti gambar di bawah
+
+![No  6 part 1 lapres Screenshot 2021-10-30 140331](https://user-images.githubusercontent.com/73422724/139526074-9c2cd9eb-b7fd-499a-a6f7-24f161fb47d2.png)
+
+- Pada node EniesLobby, Edit file named.conf.options menggunakan nano /etc/bind/named.conf.options seperti gambar di bawah
+
+![No  6 part 2 lapres Screenshot 2021-10-30 140441](https://user-images.githubusercontent.com/73422724/139526076-f08689e0-2cda-4ab6-bf8c-f438d8a2d1ae.png)
+
+- Pada node EniesLobby, Edit file named.conf.local menggunakan nano /etc/bind/named.conf.local seperti gambar di bawah
+
+![No  6 part 3 lapres Screenshot 2021-10-30 141404](https://user-images.githubusercontent.com/73422724/139526077-f756b547-1339-4a87-b234-e814351cb853.png)
+
+- Pada node EniesLobby, Restart bind9 menggunakan service bind9 restart
+- Pada node Water7, Edit file named.conf.options menggunakan nano /etc/bind/named.conf.options seperti gambar di bawah
+
+![No  6 part 4 lapres Screenshot 2021-10-30 141545](https://user-images.githubusercontent.com/73422724/139526078-baa31b1f-5a7c-401f-bd9d-106ff3c09784.png)
+
+- Pada node Water7, Edit file named.conf.local menggunakan nano /etc/bind/named.conf.local seperti gambar di bawah
+
+![No  6 part 5 lapres Screenshot 2021-10-30 141705](https://user-images.githubusercontent.com/73422724/139526079-d7a48a91-6541-44aa-95b1-7d092b8aac7c.png)
+
+- Pada node Water7, Buat folder sunnygo menggunakan mkdir /etc/bind/sunnygo
+
+![No  6 part 6 lapres Screenshot 2021-10-30 141758](https://user-images.githubusercontent.com/73422724/139526080-87701805-7df5-4a6a-9037-8fd1eca264b9.png)
+
+- Pada node Water7, Copy file db.local menggunakan cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.c12.com
+
+![No  6 part 7 lapres Screenshot 2021-10-30 141903](https://user-images.githubusercontent.com/73422724/139526081-9e4e0c22-fde1-4c6a-b6a3-83a4ec5a3779.png)
+
+- Pada node Water7, Edit file mecha.franky.c12.com menggunakan nano /etc/bind/sunnygo/mecha.franky.c12.com seperti gambar di bawah
+
+![No  6 part 8 lapres Screenshot 2021-10-30 142807](https://user-images.githubusercontent.com/73422724/139526082-96768433-df39-4657-804b-7d661f7082b6.png)
+
+- Pada node water7, Restart bind9 menggunakan service bind9 restart
+
+![No  6 part 9 lapresScreenshot 2021-10-30 142853](https://user-images.githubusercontent.com/73422724/139526083-7a0a2a25-56e0-4292-af30-c516aa5ed8f5.png)
+
+- Pada node Loguetown, jalankan ping ke mecha.franky.c12.com sehingga ping mecha.franky.c12.com
+
+![No  6 part 10 lapres Screenshot 2021-10-30 143407](https://user-images.githubusercontent.com/73422724/139526084-05922f45-74ab-4330-a608-b6179dbad014.png)
+
+7. Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie.<br>
+Jawab:
+
+- Pada node Water7, Edit file mecha.franky.c12.com menggunakan nano /etc/bind/sunnygo/mecha.franky.c12.com seperti gambar di bawah
+
+![No  7 part 1 lapres Screenshot 2021-10-30 143518](https://user-images.githubusercontent.com/73422724/139526133-0bdd4f21-e16a-40e3-ade0-b158d9e7ff6a.png)
+
+- Pada node water7, Restart bind9 menggunakan service bind9 restart
+- Pada node Loguetown, jalankan ping ke general.mecha.franky.c12.com sehingga ping general.mecha.franky.c12.com
+
+![No  7 part 2 lapres Screenshot 2021-10-30 143621](https://user-images.githubusercontent.com/73422724/139526134-f91ef4d6-f7ab-4250-98ad-4584f1c247af.png)
+
+8. Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com.<br>
+Jawab:
+- Pada node Skypie, Install apache2 menggunakan apt-get install apache2 -y
+- Pada node Skypie, Install php menggunakan apt-get install php -y
+- Pada node Skypie, Install libapache2-mod.php7.0 menggunakan apt-get install libapache2-mod.php7.0 -y
+
+![No  8 part 1 lapres Screenshot 2021-10-30 144139](https://user-images.githubusercontent.com/73422724/139526173-81a13ab9-cb3f-4dc0-ae76-4f899dd237b4.png)
+
+![No  8 part 2 lapres Screenshot 2021-10-30 144226](https://user-images.githubusercontent.com/73422724/139526174-80418118-b701-48c5-a596-aa275cf5466a.png)
+
+![No  8 part 3 lapres Screenshot 2021-10-30 144316](https://user-images.githubusercontent.com/73422724/139526176-20500e3b-1783-4dc0-af55-f2b4562fc898.png)
+
+- Pada node Skypie, Copy file 000-default.conf menggunakan cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/franky.c12.com
+
+![No  8 part 4 lapres Screenshot 2021-10-30 144959](https://user-images.githubusercontent.com/73422724/139526178-6f91eaab-c93e-47bd-85d0-0fd4a5295cb0.png)
+
+- Pada node Skypie, Edit file franky.c12.com menggunakan nano /etc/apache2/sites-available/franky.c12.com seperti gambar di bawah
+
+![No  8 part 5 lapres Screenshot 2021-10-30 145420](https://user-images.githubusercontent.com/73422724/139526179-ff47befa-cdac-42ee-ad0a-42c6684fddad.png)
+
+- Pada node Skypie, Jalankan a2ensite untuk franky.c12.com sehingga a2ensite franky.c12.com
+
+![No  8 part 6 lapres Screenshot 2021-10-30 145557](https://user-images.githubusercontent.com/73422724/139526180-0f932522-1f47-40b7-ab00-bd65f8a90757.png)
+
+- Pada node Skypie, Install wget menggunakan apt-get install wget
+- Pada node Skypie, Install unzip menggunakan apt-get install unzip
+- Pada node Skypie, Unduh file franky.zip menggunakan wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/franky.zip
+- Pada node Skypie, Unzip franky.zip pada folder /var/www sehingga unzip franky.zip -d /var/www
+- Pada node Skypie, Rename folder franky menggunakan mv /var/www/franky /var/www/franky.c12.com
+- Pada node Skypie, Restart apache2 menggunakan service apache2 restart
+- Pada node Loguetown, Install lynx menggunakan apt-get install lynx -y
+- Pada node Loguetown, Jalankan lynx ke www.franky.c12.com sehingga lynx www.franky.c12.com
+
+![No  8 part 9 lapres Screenshot 2021-10-30 150902](https://user-images.githubusercontent.com/73422724/139526185-a01e8571-b82d-4bcb-a02a-265cbb778181.png)
+
+- Hasilnya menampilkan tampilan berikut
+
+![No  8 part 10 lapres Screenshot 2021-10-30 150829](https://user-images.githubusercontent.com/73422724/139526172-6723a6f2-69a6-4b20-9c9f-b4e727d0066d.png)
+
+9. Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home dapat menjadi menjadi www.franky.yyy.com/home.<br>
+Jawab:
+- Pada node Skypie, Edit file franky.c12.com menggunakan nano /etc/apache2/sites-available/franky.c12.com seperti gambar di bawah
+
+![No  9 part 1 lapres Screenshot 2021-10-30 151101](https://user-images.githubusercontent.com/73422724/139526212-c202361b-1c16-4ddd-939b-7b942ded7117.png)
+
+- Pada node Skypie, Restart apache2 menggunakan service apache2 restart
+- Pada node Loguetown, Jalankan lynx ke www.franky.c12.com/home sehingga lynx www.franky.c12.com/home
+
+![No  9 part 2 lapres Screenshot 2021-10-30 151211](https://user-images.githubusercontent.com/73422724/139526216-1facc337-d18e-4688-b739-6c02042846e3.png)
+
+- Hasilnya menampilkan tampilan berikut
+
+![No  9 part 3 lapres Screenshot 2021-10-30 151145](https://user-images.githubusercontent.com/73422724/139526217-486e35ca-4435-407b-9b12-a124fe0d566f.png)
+
+10. Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpanan aset yang memiliki DocumentRoot pada /var/www/super.franky.yyy.com .<br>
+Jawab:
+- Pada node Skypie, Copy file 000-default.conf menggunakan cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/super.franky.c12.com
+- Pada node Skypie, Edit file super.franky.c12.com menggunakan nano /etc/apache2/sites-available/super.franky.c12.com seperti gambar di bawah
+
+![No  10 part 1 lapres Screenshot 2021-10-30 151354](https://user-images.githubusercontent.com/73422724/139526238-3bad9ef2-a818-43ae-9beb-2c91d56a52be.png)
+
+- Pada node Skypie, Jalankan a2ensite untuk super.franky.c12.com sehingga a2ensite super.franky.c12.com
+
+![No  10 part 2 lapres Screenshot 2021-10-30 151430](https://user-images.githubusercontent.com/73422724/139526240-bfce631e-7fdb-4e37-a058-3d6fc35759f8.png)
+
+- Pada node Skypie, Unduh file super.franky.zip menggunakan wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/super.franky.zip
+- Pada node Skypie, Unzip super.franky.zip pada folder /var/www sehingga unzip super.franky.zip -d /var/www
+- Pada node Skypie, Rename folder super.franky menggunakan mv /var/www/franky /var/www/super.franky.c12.com
+- Pada node Skypie, Restart apache2 menggunakan service apache2 restart
+- Pada node Loguetown, Jalankan lynx ke www.franky.c12.com sehingga lynx super.franky.c12.com
+
+![No  10 part 3 lapres Screenshot 2021-10-30 151619](https://user-images.githubusercontent.com/73422724/139526241-b706df42-2ab7-4268-af88-fb87adaad0e6.png)
+
+- Hasilnya menampilkan tampilan berikut
+
+![No  10 part 4 lapres Screenshot 2021-10-30 151707](https://user-images.githubusercontent.com/73422724/139526243-6a17cb39-cc13-4d49-b333-18329474ccd2.png)
+
 
 <br><br><br>
 <br><br><br>
@@ -67,11 +202,11 @@ Jawab:
 
 ![No  17 part 2 Screenshot 2021-10-29 232921](https://user-images.githubusercontent.com/73422724/139473520-84c83ee9-70c0-4336-b35c-ae485ab3ff4d.png)
 
-- Pada node Skypie, Rrestart apache2 menggunakan service apache2 restart 
+- Pada node Skypie, Restart apache2 menggunakan service apache2 restart 
 
 ![No  17 part 3 Screenshot 2021-10-29 233001](https://user-images.githubusercontent.com/73422724/139473523-2779d9d7-7c9e-4ab6-a110-693263eaaf99.png)
 
-- Pada node Loguetown, jalankan lynx ke franky.png sehingga lynx super.franky.c12.com/public/images/franky.png
+- Pada node Loguetown, Jalankan lynx ke franky.png sehingga lynx super.franky.c12.com/public/images/franky.png
 
 ![No  17 part 4 Screenshot 2021-10-29 233046](https://user-images.githubusercontent.com/73422724/139473526-50c955ec-28f7-4a28-b8b9-cd81029e3565.png)
 
@@ -80,7 +215,7 @@ Jawab:
 ![No  17 part 5 Screenshot 2021-10-29 233154](https://user-images.githubusercontent.com/73422724/139473531-a7dcc715-5c77-4b16-94ea-401ae4bf57a9.png)
 
 - Testing kedua,
-- Pada node Loguetown, jalankan lynx ke super.franky.c12.com sehingga lynx super.franky.c12.com
+- Pada node Loguetown, Jalankan lynx ke super.franky.c12.com sehingga lynx super.franky.c12.com
 
 ![No  17 part 6 Screenshot 2021-10-29 233242](https://user-images.githubusercontent.com/73422724/139473534-53294190-2301-4612-a64b-bbb854d5f3d6.png)
 
