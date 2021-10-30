@@ -84,8 +84,10 @@ Jawab:
 
 3. Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie.
 Jawab:
--Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/kaizoku/franky.B09.com:
+-Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/kaizoku/franky.C12.com:
 3-1
+kemudian restart bind9
+-Pada Loguetown, ping super.frank
 
 6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
 Jawab:
