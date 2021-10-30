@@ -104,33 +104,31 @@ kemudian restart bind9
 - Pada Loguetown, ping super.franky.C12.com:
 3-2
 
-4. Buat juga reverse domain untuk domain utama.
+4. Buat juga reverse domain untuk domain utama<br>
 Jawab:
-- Pada EniesLobby, masukkan konfigurasi berikut pada file /etc/bind/named.conf.local:
-4-1
-- Lakukan perintah <code>cp /etc/bind/db.local /etc/bind/kaizoku/2.181.192.in-addr.arpa</code> dan masukkan konfigurasi berikut pada file yang dibuat:
-4-2
-- Restart bind9
-- Pada Loguetown, cek konfigurasi dengan perintah <code>host -t PTR 10.20.2.2</code>
-4-3
 
-5. Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
+![image](https://user-images.githubusercontent.com/63639703/139537991-d588be57-e9f0-4e0a-bc74-d3bb2fca77ec.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139538112-5770f757-8cb8-4097-99df-978da21e1d5f.png)
+
+Lalu di testing 
+
+![image](https://user-images.githubusercontent.com/63639703/139538538-07f7600f-69f1-43e7-a9fc-c5a1ca52588e.png)
+
+5. Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama <br>
 Jawab:
-- Pada EniesLobby, masukkan config berikut ke /etc/bind/named.conf.local, kemudian restart bind9:
-5-1
-- Pada Water7, masukkan config berikut ke /etc/bind/named.conf.local, kemudian restart bind9:
-5-2
-- Pada EniesLobby, hentikan service bind9:
-5-3
-- Pada Loguetown, edit file /etc/resolv.conf:
-5-4
-- Lakukan ping franky.C12.com:
-5-5
 
-4. Buat juga reverse domain untuk domain utama
+![image](https://user-images.githubusercontent.com/63639703/139538168-0df4e06a-b55f-4f75-afe1-8f98952e46db.png)
 
-5. Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama 
+- Lalu service bind9 restart, dan buka water7 untuk memasuki konfigurasi sebagai berikut
 
+![image](https://user-images.githubusercontent.com/63639703/139538218-1a88c5b6-a527-4b49-b70d-f1a4a6b9fdea.png)
+
+- Lalu service bind9 restart, service bind9 stop pada enies lobby dan dicoba ping 
+
+![image](https://user-images.githubusercontent.com/63639703/139538508-61439ee6-dcf4-44fd-877e-8e22715a1119.png)
+
+![image](https://user-images.githubusercontent.com/63639703/139538495-c938b07f-cfc7-4719-9369-6a772f090166.png)
 6. Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.<br>
 Jawab:
 - Pada node EniesLobby, Edit file franky.c12.com menggunakan nano /etc/bind/kaizoku/franky.c12.com seperti gambar di bawah
